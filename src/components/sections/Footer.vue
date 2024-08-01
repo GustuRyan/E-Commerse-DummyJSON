@@ -12,7 +12,7 @@
             </div>
             <div class="flex">
                 <input type="text" class="border-2 border-[#CED4DA] p-4" placeholder="Enter Your Email">
-                <button class="p-4 bg-[#84BAE8] text-xl text-white">
+                <button class="p-4 bg-[#84BAE8] hover:bg-[#6498c6] text-xl text-white">
                     SUBSCRIBE
                 </button>
             </div>

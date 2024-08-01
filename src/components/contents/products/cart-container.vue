@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-between">
-        <div class="flex gap-2">
+    <div class="flex justify-between hover:bg-[rgb(245,245,245)] py-2 hover:px-2">
+        <div class="flex gap-1">
             <img src="https://cdn.dummyjson.com/products/images/sports-accessories/Cricket%20Helmet/thumbnail.png" alt="" class="w-20 h-20 object-cover">
             <p class="flex flex-col">
                 <span>
@@ -13,7 +13,7 @@
         </div>
         <div class="h-fit grid grid-cols-4 item-center gap-y-8">
             <div class="flex col-span-2 sm:col-span-1 sm:place-content-end">
-                <div class="w-10 h-10 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
+                <div class="w-9 h-9 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
                     <img src="/images/plus-for-cart.svg" alt="" class="w-5 h-5">
                 </div>
             </div>
@@ -22,10 +22,10 @@
                     1
                 </span>
             </p>
-            <div class="w-10 h-10 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
+            <div class="w-9 h-9 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
                 <img src="/images/minus-for-cart.svg" alt="" class="w-5 h-5">
             </div>
-            <div class="cursor-pointer hover:opacity-60 flex place-content-end lg:col-span-1 col-span-4">
+            <div class="cursor-pointer hover:opacity-60 flex items-center place-content-end lg:col-span-1 col-span-4">
                 <img src="/images/bin-logo.svg" alt="" class="w-6 h-6">
             </div>
         </div>

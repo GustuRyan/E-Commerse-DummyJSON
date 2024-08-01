@@ -6,7 +6,7 @@
                     Keranjang Saya (4)
                 </h1>
             </div>
-            <section class="w-full h-fit flex flex-col px-10 overflow-y-scroll scrollbar-hide pt-6 pb-4 gap-6">
+            <section class="w-full h-fit flex flex-col px-10 overflow-y-scroll scrollbar-hide pt-6 pb-4 gap-4">
                 <CartContainer />
                 <CartContainer />
                 <CartContainer />
@@ -25,9 +25,9 @@
                         Rp. 177.000
                     </span>
                 </p>
-                <button class="hover:opacity-60">
+                <router-link :to="{ name: 'my-cart' }" class="hover:opacity-60 text-nowrap flex items-center">
                     Checkout Sekarang
-                </button>
+                </router-link>
             </div>
         </section>
         <div @click="$emit('change-open');" class="w-full h-full fixed top-0 z-[60] bg-[#121212] opacity-25"></div>
