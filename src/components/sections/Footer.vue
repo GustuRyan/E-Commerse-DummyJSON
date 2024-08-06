@@ -24,47 +24,47 @@
                     Logo Ipsum Indonesia
                 </h3>
                 <p class="text-[#252525] w-[400px]">
-                    Logo Ipsum merupakan e-commerse terbesar di dunia yang diawali pada tahun 1955 di
-                    California, Amerika Serikat. Dengan produk unggulan berupa Sabun Mandi dengan nama Awash,
+                    Ipsum logo is the largest e-commerce in the world which started in 1955 in
+                    California, United States. With superior products in the form of Bath Soap under the name Awash.
                     <br>
                     <br>
-                    Logo Ipsum hingga saat ini telah memiliki ribuan restoran yang tersebar di lebih dari 100 negara,
-                    salah satunya Indonesia.
+                    The Ipsum logo currently has thousands of restaurants spread across more than 100 countries,
+                    one of them is Indonesia.
                 </p>
             </div>
             <div class="flex gap-10 text-[#121212]">
                 <div class="flex flex-col gap-3">
                     <h4 class="font-[500] text-lg">
-                        Lainnya
+                        Others
                     </h4>
                     <ul class="flex flex-col gap-1">
                         <li>
-                            Pusat Bantuan
+                            Care Center
                         </li>
                         <li>
-                            Kontak Kami
+                            Contact Us
                         </li>
                     </ul>
                 </div>
                 <div class="flex flex-col gap-3">
                     <h4 class="font-[500] text-lg">
-                        Informasi
+                        Informations
                     </h4>
                     <ul class="flex flex-col gap-1">
                         <li>
-                            Privasi dan Kebijakan
+                            Privacy and Policy
                         </li>
                         <li>
-                            Syarat dan Ketentuan
+                            Term and Conditions
                         </li>
                         <li>
-                            Kebijakan Cookie
+                            Cookie Policy
                         </li>
                     </ul>
                 </div>
                 <div class="flex flex-col gap-3">
                     <h4 class="font-[500] text-lg">
-                        Sosial Media
+                        Social Media
                     </h4>
                     <ul class="flex flex-col gap-1">
                         <li>

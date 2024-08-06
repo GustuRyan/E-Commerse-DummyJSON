@@ -8,15 +8,25 @@ import MyCartView from './components/MyCartView.vue'
 import LoginView from './components/LoginView.vue'
 import RegistView from './components/RegistView.vue'
 import ProductDetailView from './components/ProductDetailView.vue'
+import HomeView from './components/HomeView.vue'
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
+            path: '/', name: 'home', component: HomeView
+        },
+        {
+            path: '/about', name: 'about', component: HomeView
+        },
+        {
+            path: '/articles', name: 'articles', component: HomeView
+        },
+        {
             path: '/products',
             children: [
-                { path: '', name: 'products', component: ProductsView },
-                { path: 'detail', name: 'product-detail', component: ProductDetailView },
+                { path: 'page:page', name: 'products', component: ProductsView },
+                { path: 'detail/:id', name: 'product-detail', component: ProductDetailView },
                 { path: 'my-cart', name: 'my-cart', component: MyCartView },
             ],
         },

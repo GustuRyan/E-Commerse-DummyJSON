@@ -1,7 +1,31 @@
+<script setup>
+const getCookie = (name) => {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+// Check if user is logged in
+const isLoggedIn = () => {
+  return getCookie('authToken') !== null;
+}
+
+if (isLoggedIn()) {
+  console.log('User is already logged in');
+} else {
+  console.log('User is not logged in');
+}
+</script>
+
 <template>
     <section class="w-full h-full flex">
-        <div class="p-20 w-[50%]">
-            <section class="flex flex-col gap-4">
+        <div class="p-20 w-[50%] h-screen flex items-center">
+            <section class="w-full flex flex-col gap-4">
                 <h1 class="text-lg text-[#84BAE8]">
                     REGIST ACCOUNT
                 </h1>
@@ -58,7 +82,7 @@
             </section>
         </div>
         <div class="w-[50%] h-full">
-            <img src="/images/auth-picture.jpg" alt="" class="w-fit h-[668.8px] object-cover">
+            <img src="/images/auth-picture.jpg" alt="" class="w-fit h-screen object-cover">
         </div>
     </section>
 </template>
