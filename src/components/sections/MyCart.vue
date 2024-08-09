@@ -1,12 +1,18 @@
 <script setup>
 import { defineProps, defineEmits, reactive, toRefs, onMounted, onUnmounted, watch } from 'vue';
 import CartContainer from '../contents/products/cart-container.vue';
+import { Cart } from '../../composables/cartFunction';
 
 const props = defineProps({
 
 });
 
 const emit = defineEmits(['change-open', 'update-overall-prices']);
+
+const {
+    carts,
+    total,
+} = Cart();
 </script>
 
 <template>
@@ -31,14 +37,7 @@ const emit = defineEmits(['change-open', 'update-overall-prices']);
                         </p>
                     </div>
                     <section class="w-full h-[448px] flex flex-col overflow-y-scroll scrollbar-hide pb-4 gap-4">
-                        <CartContainer />
-                        <CartContainer />
-                        <CartContainer />
-                        <CartContainer />
-                        <CartContainer />
-                        <CartContainer />
-                        <CartContainer />
-                        <CartContainer />
+                        <CartContainer v-for="cart in carts" :product = "cart" :quant="cart.quantity" />
                     </section>
                 </div>
             </section>
@@ -142,7 +141,7 @@ const emit = defineEmits(['change-open', 'update-overall-prices']);
                                 Items Subtotal
                             </span>
                             <span>
-                                $100.00
+                                $ {{ total }}
                             </span>
                         </p>
                         <p class="w-full flex justify-between text-lg">
@@ -158,7 +157,7 @@ const emit = defineEmits(['change-open', 'update-overall-prices']);
                                 Order Total
                             </span>
                             <span>
-                                $100.00
+                                $ {{ total }}
                             </span>
                         </p>
                     </div>

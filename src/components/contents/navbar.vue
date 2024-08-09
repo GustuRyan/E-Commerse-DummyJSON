@@ -2,6 +2,7 @@
 import CartBar from '../contents/cartbar.vue';
 import { ref } from 'vue';
 import { Auth } from '../../composables/authFunctions';
+import { Cart } from '../../composables/cartFunction';
 
 const cartOpen = ref(false);
 const profileOpen = ref(false);
@@ -14,6 +15,12 @@ const {
     password,
     user
 } = Auth();
+
+const {
+    addList,
+    addCart,
+    carts,
+} = Cart();
 
 const handleEscapeKey = (event) => {
     if (event.key === 'Escape') {
@@ -70,11 +77,10 @@ window.addEventListener('keydown', handleEscapeKey);
                     </p>
                 </div>
             </div>
-
-            <div @click="cartOpen = !cartOpen" class="w-6 h-6 relative flex items-center justify-center hover:opacity-60 cursor-pointer"> 
+            <div @click="cartOpen = !cartOpen, addCart(1)" class="w-6 h-6 relative flex items-center justify-center hover:opacity-60 cursor-pointer"> 
                 <img src="/images/shopping-bag.png" alt="shopping-bag-logo" class="h-5 w-fit">
                 <div class="w-5 h-5 absolute top-[-8px] right-[-8px] flex justify-center items-center rounded-full bg-[#84BAE8] border-[1px] border-white pb-[1px]">
-                    <span class="text-center text-sm font-bold font-['Cabinet Grotesk Variable']">0</span>
+                    <span class="text-center text-sm font-bold font-['Cabinet Grotesk Variable']">{{ carts.length }}</span>
                 </div>
             </div>
         </div>

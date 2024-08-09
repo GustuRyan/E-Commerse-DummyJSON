@@ -24,7 +24,8 @@ export function Product() {
             name: 'products',
             params: { page: link - 1 },
             query: { page: link - 1 }
-        }).then(() => {
+        })
+        .then(() => {
             window.location.reload();
         });
     };

@@ -2,6 +2,7 @@
 import { defineProps, ref } from 'vue';
 import warnbar from '../contents/warnbar.vue';
 import { Auth } from '../../composables/authFunctions';
+import { Cart } from '../../composables/cartFunction';
 
 const props = defineProps ({
     product: {
@@ -15,6 +16,11 @@ const warnOpen = ref(false);
 const {
     isLoggedIn,
 } = Auth();
+
+const {
+    addList,
+    addCart
+} = Cart()
 
 const handleEscapeKey = (event) => {
     if (event.key === 'Escape') {
@@ -35,7 +41,7 @@ window.addEventListener('keydown', handleEscapeKey);
                 <span class="text-lg font-[500]">
                     ${{ product.price }}
                 </span>
-                <button v-if="isLoggedIn()" class="px-6 py-3 text-lg text-white bg-[#84BAE8] hover:bg-[#6498c6]">
+                <button v-if="isLoggedIn()" @click="addCart(5, product.id, 3)" class="px-6 py-3 text-lg text-white bg-[#84BAE8] hover:bg-[#6498c6]">
                     Add to Cart
                 </button>
                 <button v-else @click="warnOpen = !warnOpen" class="px-6 py-3 text-lg text-white bg-[#84BAE8] hover:bg-[#6498c6]">

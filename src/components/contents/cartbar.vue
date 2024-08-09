@@ -3,7 +3,7 @@
         <section class="fixed flex flex-col justify-between items-center w-[436px] h-screen bg-white z-[70] top-0 right-0">
             <div class="w-full h-20 flex border-b-[1px] sticky top-0 bg-white items-center px-10 py-6">
                 <h1 class="text-2xl text-start">
-                    My Cart ()
+                    My Cart ({{ carts.length }})
                 </h1>
             </div>
             <section class="w-full h-full flex flex-col px-10 overflow-y-scroll scrollbar-hide pt-6 pb-4 gap-4">
@@ -18,7 +18,7 @@
                         Login Right Now
                     </router-link>
                 </div>
-                <CartContainer v-else />
+                <CartContainer v-else v-for="cart in carts" :product = "cart" :quant="cart.quantity" />
             </section>
             <div class="w-full h-fit flex justify-between py-4 px-10 bg-[#84BAE8] text-white text-lg">
                 <p class="flex flex-col">
@@ -26,7 +26,7 @@
                         Total
                     </span>
                     <span class="font-[500]">
-                        $
+                        $ {{ total }}
                     </span>
                 </p>
                 <router-link v-if="isLoggedIn()" @click="$emit('change-open');" :to="{ name: 'my-cart' }" class="hover:opacity-60 text-nowrap flex items-center">
@@ -39,13 +39,19 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, reactive, toRefs, onMounted, onUnmounted, watch } from 'vue';
+import { defineProps, defineEmits, ref, toRefs, onMounted, onUnmounted, watch } from 'vue';
 import CartContainer from './products/cart-container.vue';
 import { Auth } from '../../composables/authFunctions';
+import { Cart } from '../../composables/cartFunction';
 
 const {
     isLoggedIn,
 } = Auth();
+
+const {
+    carts,
+    total,
+} = Cart();
 
 const props = defineProps({
     

@@ -14,8 +14,8 @@
                 <p class="font-bold text-sm">
                     ${{ product.price }}
                 </p>
-                <router-link v-if="isLoggedIn()" :to="{ name: 'my-cart' }"
-                    class="px-3 py-2 bg-[#84BAE8] hover:bg-[#6498c6] flex items-center gap-3 text-white">
+                <router-link v-if="isLoggedIn()" @click="addList(product.id, 1)" :to="{ query: { page: page }}"
+                    class="px-3 py-2 bg-[#84BAE8] hover:bg-[#6498c6] flex items-center gap-3 text-white z-20">
                     <span>
                         ADD TO CART
                     </span>
@@ -36,12 +36,21 @@
 <script setup>
 import { defineProps, ref, defineEmits } from 'vue';
 import { Auth } from '../../../composables/authFunctions';
+import { Cart } from '../../../composables/cartFunction';
+import { useRoute } from 'vue-router';
 
 const {
     isLoggedIn,
 } = Auth();
 
+const {
+    addList,
+    addCart
+} = Cart();
+
 const emit = defineEmits(['change-open']);
+const route = useRoute();
+const page = route.query.page;
 
 const props = defineProps({
     product: {

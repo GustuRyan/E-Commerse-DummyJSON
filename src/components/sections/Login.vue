@@ -13,14 +13,6 @@ const {
 
 const route = useRoute();
 const router = useRouter();
-
-if (isLoggedIn()) {
-    console.log('User is already logged in');
-    console.log(user);
-} else {
-    console.log('User is not logged in');
-}
-
 const productPage = () => {
   router.push({
     name: 'products',
@@ -30,6 +22,15 @@ const productPage = () => {
     window.location.reload();
   });
 };
+
+if (isLoggedIn()) {
+    console.log('User is already logged in');
+    console.log(user);
+    productPage()
+} else {
+    console.log('User is not logged in');
+}
+
 </script>
 
 <template>
