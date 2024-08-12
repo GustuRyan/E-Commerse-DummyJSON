@@ -15,6 +15,7 @@ const warnOpen = ref(false);
 
 const {
     isLoggedIn,
+    logUser
 } = Auth();
 
 const {
@@ -41,7 +42,7 @@ window.addEventListener('keydown', handleEscapeKey);
                 <span class="text-lg font-[500]">
                     ${{ product.price }}
                 </span>
-                <button v-if="isLoggedIn()" @click="addCart(5, product.id, 3)" class="px-6 py-3 text-lg text-white bg-[#84BAE8] hover:bg-[#6498c6]">
+                <button v-if="isLoggedIn()" @click="addList(product.id, 1), addCart(logUser.id)" class="px-6 py-3 text-lg text-white bg-[#84BAE8] hover:bg-[#6498c6]">
                     Add to Cart
                 </button>
                 <button v-else @click="warnOpen = !warnOpen" class="px-6 py-3 text-lg text-white bg-[#84BAE8] hover:bg-[#6498c6]">

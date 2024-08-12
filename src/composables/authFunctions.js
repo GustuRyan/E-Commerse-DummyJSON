@@ -8,6 +8,8 @@ export function Auth() {
     const user = ref({});
     const route = useRoute();
     const router = useRouter();
+    const userId = ref(null);
+    const logUser = ref({});
 
     const setCookie = (name, value, days) => {
         let expires = "";
@@ -61,6 +63,7 @@ export function Auth() {
 
             if (data.token) {
                 setCookie('authToken', data.token, 1); // save token in cookie for 1 day
+                setCookie('userId', data.id, 1); // save id in cookie for 1 day
                 console.log('Login successful', data);
                 productPage();
             } else {
@@ -73,6 +76,14 @@ export function Auth() {
 
     // Check if user is logged in
     const isLoggedIn = () => {
+        userId.value = getCookie('userId');
+
+        fetch('https://dummyjson.com/users/' + userId.value)
+            .then(res => res.json())
+            .then(data => {
+                logUser.value = data;
+            });
+
         return getCookie('authToken') !== null;
     }
 
@@ -93,6 +104,7 @@ export function Auth() {
         logout,
         username,
         password,
-        user
+        user,
+        logUser
     };
 }

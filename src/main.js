@@ -24,6 +24,7 @@ const router = createRouter({
         },
         {
             path: '/products',
+            name: 'main-products',
             children: [
                 { path: 'page:page', name: 'products', component: ProductsView },
                 { path: 'detail/:id', name: 'product-detail', component: ProductDetailView },

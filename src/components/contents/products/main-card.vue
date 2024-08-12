@@ -41,6 +41,7 @@ import { useRoute } from 'vue-router';
 
 const {
     isLoggedIn,
+    logUser
 } = Auth();
 
 const {
