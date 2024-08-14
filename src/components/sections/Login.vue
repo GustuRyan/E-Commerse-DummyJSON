@@ -31,6 +31,13 @@ if (isLoggedIn()) {
     console.log('User is not logged in');
 }
 
+const handleEnterKey = (event) => {
+    if (event.key === 'Enter') {
+        Authentication();
+    }
+};
+
+window.addEventListener('keydown', handleEnterKey);
 </script>
 
 <template>
@@ -49,9 +56,9 @@ if (isLoggedIn()) {
                 </p>
                 <form action="" class="flex flex-col gap-4">
                     <div class="flex flex-col gap-1">
-                        <label for="email">Email</label>
+                        <label for="email">Username</label>
                         <input v-model="username" class="px-4 py-3 rounded-md border-2 border-slate-300" type="text"
-                            name="email" placeholder="Enter your email">
+                            name="email" placeholder="Enter your username">
                     </div>
                     <div class="flex flex-col gap-1">
                         <label for="password">Password</label>
@@ -64,8 +71,8 @@ if (isLoggedIn()) {
                 </p>
                 <div class="flex justify-between items-center">
                     <router-link :to="{}" @click="Authentication"
-                        class="px-3 py-2 bg-[#111111] rounded-md border-2 border-[#111111] text-white text-lg hover:opacity-85">
-                        Login with email
+                        class="px-8 py-2 bg-[#111111] rounded-md border-2 border-[#111111] text-white text-lg hover:opacity-85">
+                        Login Now
                     </router-link>
                     <span class="text-nowrap">
                         Or

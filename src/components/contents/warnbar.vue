@@ -1,7 +1,7 @@
 <template>
-    <div class="w-full h-full">
+    <div class="fixed w-screen h-screen z-[70] flex justify-center items-center top-0">
         <section
-            class="fixed flex flex-col justify-between items-center w-[560px] h-fit p-16 rounded-md bg-white z-[70] top-52 left-[480px]">
+            class="flex flex-col justify-between items-center w-[560px] h-fit p-16 rounded-md bg-white z-[70]">
             <div class="w-full h-full flex flex-col justify-center items-center gap-8">
                 <h3 class="text-center text-xl font-[500]">
                     You're not login yet

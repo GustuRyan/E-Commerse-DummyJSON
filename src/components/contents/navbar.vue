@@ -7,6 +7,7 @@ import { Product } from '../../composables/productsFunction';
 
 const cartOpen = ref(false);
 const profileOpen = ref(false);
+const clicked2 = ref(false);
 
 const {
     Authentication,
@@ -31,10 +32,28 @@ const {
 const handleEscapeKey = (event) => {
     if (event.key === 'Escape') {
         cartOpen.value = false
+        profileOpen.value = false
     }
 };
 
 window.addEventListener('keydown', handleEscapeKey);
+
+const popElement2 = () => {
+    if (clicked2.value) {
+        profileOpen.value = false;
+    } else {
+        profileOpen.value = true;
+    }
+};
+
+const onClickAway2 = () => {
+    if (profileOpen.value) {
+        profileOpen.value = false;
+        clicked2.value = true;
+    } else {
+        clicked2.value = false;
+    }
+};
 </script>
 
 <template>
@@ -74,14 +93,14 @@ window.addEventListener('keydown', handleEscapeKey);
                 </router-link>
             </ul>
             <div v-else class="relative w-fit h-fit">
-                <div @click="profileOpen = !profileOpen" v-cloak="profileOpen = !profileOpen"
+                <div @click="popElement2"
                     class="w-fit h-full flex gap-2 items-center pl-3 hover:bg-neutral-100 py-1 pr-1 rounded-full cursor-pointer">
                     <span class="text-lg font-[500] capitalize">
                         {{ logUser.username }}
                     </span>
                     <img :src="logUser.image" alt="" class="rounded-full w-10 h-10 border-[1px]">
                 </div>
-                <div v-if="profileOpen"
+                <div v-show="profileOpen" v-click-away="onClickAway2"
                     class="absolute w-48 top-[58px] right-0 flex flex-col bg-white border-[1px] rounded-md p-4">
                     <router-link :to="{ name: 'home' }" class="font-[500] hover:bg-neutral-100 pb-3">
                         My Profile

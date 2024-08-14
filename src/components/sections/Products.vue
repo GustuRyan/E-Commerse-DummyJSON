@@ -1,7 +1,6 @@
 <script setup>
 import ProductCard from '../contents/products/main-card.vue'
-import { ref, onMounted, toRefs, onUnmounted } from 'vue';
-import { defineProps } from 'vue';
+import { ref, onMounted, toRefs, onUnmounted, defineProps } from 'vue';``
 import { useRoute, useRouter } from 'vue-router';
 import warnbar from '../contents/warnbar.vue';
 import { Product } from '../../composables/productsFunction';
@@ -40,6 +39,7 @@ const {
 
 const warnOpen = ref(false);
 const dropOpen = ref(false);
+const clicked = ref(false);
 const { page } = toRefs(props);
 const link = ref(0)
 const array = ref(5);
@@ -58,7 +58,25 @@ const handleEnterKey = (event) => {
 
 const escapeWarnKey = (event) => {
     if (event.key === 'Escape') {
-        warnOpen.value = false
+        warnOpen.value = false;
+        dropOpen.value = false;
+    }
+};
+
+const popElement = () => {
+    if (clicked.value) {
+        dropOpen.value = false;
+    } else {
+        dropOpen.value = true;
+    }
+};
+
+const onClickAway = () => {
+    if (dropOpen.value) {
+        dropOpen.value = false;
+        clicked.value = true;
+    } else {
+        clicked.value = false;
     }
 };
 
@@ -102,20 +120,20 @@ onUnmounted(async () => {
                 </router-link>
             </div>
             <div class="relative w-full flex flex-col justify-end items-end">
-                <div @click="dropOpen = !dropOpen" class="p-2 w-48 flex justify-between items-center rounded-md border-[1px] shadow-md cursor-pointer font-[500] hover:bg-slate-200 capitalize">
+                <div @click="popElement" class="p-2 w-48 flex justify-between items-center rounded-md border-[1px] shadow-md cursor-pointer font-[500] hover:bg-neutral-100 capitalize">
                     <span v-if="filter == null">
                         all products
                     </span>
                     <span v-else>
-                        {{ filter }}
+                        {{ filter }}    
                     </span>
                     <img src="/images/down_fill.svg" alt="" :class="dropOpen ? 'rotate-180' : ''">
                 </div>
-                <div v-if="dropOpen" class="absolute top-16 right-0 flex flex-col px-4 py-2 w-80 rounded-md border-[1px] shadow-md cursor-pointer bg-white capitalize">
-                    <router-link @click="jumpPage(1)" :to="{}" class="font-[500] p-2 hover:bg-slate-200 rounded-sm">
+                <div v-show="dropOpen" v-click-away="onClickAway" class="absolute top-16 right-0 flex flex-col px-4 py-2 w-80 rounded-md border-[1px] shadow-md cursor-pointer bg-white capitalize">
+                    <router-link @click="jumpPage(1)" :to="{}" class="font-[500] p-2 hover:bg-neutral-100 rounded-sm">
                         all products
                     </router-link>
-                    <router-link v-for="category in uniqueCategories" @click="filterSearch(category)" :to="{}" class="font-[500] p-2 hover:bg-slate-200 border-t-[1px] rounded-sm">
+                    <router-link v-for="category in uniqueCategories" @click="filterSearch(category)" :to="{}" class="font-[500] p-2 hover:bg-neutral-100 border-t-[1px] rounded-sm">
                         {{ category }}
                     </router-link>
                 </div>

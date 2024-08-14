@@ -13,16 +13,16 @@
         </div>
         <div class="h-fit grid grid-cols-4 item-center gap-y-8">
             <div class="flex col-span-2 sm:col-span-1 sm:place-content-end">
-                <div @click="increment(), updateCart(product.id, quantity)" class="w-9 h-9 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
+                <div @click="updateInCart(product.id, quant)" class="w-9 h-9 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
                     <img src="/images/plus-for-cart.svg" alt="" class="w-5 h-5">
                 </div>
             </div>
             <p class="font-[500] flex items-center place-content-center">
                 <span class="h-fit text-lg">
-                    {{ quantity }}
+                    {{ quant }}
                 </span>
             </p>
-            <div @click="decrement(), updateCart(product.id, quantity)" class="w-9 h-9 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
+            <div @click="updateDecCart(product.id, quant)" class="w-9 h-9 rounded-lg border-[1px] flex justify-center items-center hover:bg-slate-300 cursor-pointer">
                 <img src="/images/minus-for-cart.svg" alt="" class="w-5 h-5">
             </div>
             <div @click="deleteCart(product.id)" class="cursor-pointer hover:opacity-60 flex items-center place-content-end lg:col-span-1 col-span-4">
@@ -49,21 +49,9 @@ const props = defineProps ({
 
 const {
     deleteCart,
-    updateCart,
+    updateDecCart,
+    updateInCart,
 } = Cart();
 
 const { product, quant } = toRefs(props);
-
-const quantity = defineModel({ default: 0 });
-quantity.value = quant.value;
-
-function increment() {
-  quantity.value++;
-}
-
-function decrement() {
-    if (quantity.value > 0) {
-        quantity.value--;
-    }
-}
 </script>

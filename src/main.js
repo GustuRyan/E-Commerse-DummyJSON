@@ -9,6 +9,7 @@ import LoginView from './components/LoginView.vue'
 import RegistView from './components/RegistView.vue'
 import ProductDetailView from './components/ProductDetailView.vue'
 import HomeView from './components/HomeView.vue'
+import VueClickAway from "vue3-click-away";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -45,6 +46,7 @@ const pinia = createPinia();
 const app = createApp(App)
 
 app.use(router);
+app.use(VueClickAway);
 app.use(pinia);
 
 app.mount('#app')

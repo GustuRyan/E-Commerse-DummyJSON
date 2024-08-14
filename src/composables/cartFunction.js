@@ -59,10 +59,10 @@ export function Cart() {
         }
     };
 
-    const updateCart = (id, quant) => {
-        if (quant != 0) {
+    const updateDecCart = (id, quant) => {
+        if (quant > 1) {
             const listing = list.value.find(item => item.id === id);
-            listing.quantity = quant;
+            listing.quantity -= 1;
             addCart(1);
         } else {
             list.value = list.value.filter(cart => cart.id !== id);
@@ -70,17 +70,31 @@ export function Cart() {
         }
     }
 
+    const updateInCart = (id, quant) => {
+            const listing = list.value.find(item => item.id === id);
+            listing.quantity += 1;
+            addCart(1);
+    }
+
     const deleteCart = (id) => {
-        list.value = list.value.filter(cart => cart.id !== id);
-        addCart(1);
+        if (list.value.length > 1) {
+            list.value = list.value.filter(cart => cart.id !== id);
+            addCart(1);
+        } else {
+            carts.value.length = 0;
+            list.value.length = 0;
+            console.log('all carts deleted successfully')
+        }
     }
 
     return {
         addList,
         addCart,
-        updateCart,
+        updateDecCart,
+        updateInCart,
         deleteCart,
         carts,
+        list,
         total,
     }
 }

@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps, defineEmits, reactive, toRefs, onMounted, onUnmounted, watch } from 'vue';
 import CartContainer from '../contents/products/cart-container.vue';
+import suggestCard from '../contents/suggest-card.vue';
 import { Cart } from '../../composables/cartFunction';
 
 const props = defineProps({
@@ -11,6 +12,7 @@ const emit = defineEmits(['change-open', 'update-overall-prices']);
 
 const {
     carts,
+    list,
     total,
 } = Cart();
 </script>
@@ -38,6 +40,7 @@ const {
                     </div>
                     <section class="w-full h-[448px] flex flex-col overflow-y-scroll scrollbar-hide pb-4 gap-4">
                         <CartContainer v-for="cart in carts" :product = "cart" :quant="cart.quantity" />
+                        <suggestCard v-if="list == 0" />
                     </section>
                 </div>
             </section>
