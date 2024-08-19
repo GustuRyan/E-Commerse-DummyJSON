@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { Auth } from '../../composables/authFunctions';
 import { Cart } from '../../composables/cartFunction';
 import { Product } from '../../composables/productsFunction';
+import { vOnClickOutside } from '@vueuse/components';
 
 const cartOpen = ref(false);
 const profileOpen = ref(false);
@@ -100,7 +101,7 @@ const onClickAway2 = () => {
                     </span>
                     <img :src="logUser.image" alt="" class="rounded-full w-10 h-10 border-[1px]">
                 </div>
-                <div v-show="profileOpen" v-click-away="onClickAway2"
+                <div v-show="profileOpen" v-on-click-outside="onClickAway2"
                     class="absolute w-48 top-[58px] right-0 flex flex-col bg-white border-[1px] rounded-md p-4">
                     <router-link :to="{ name: 'home' }" class="font-[500] hover:bg-neutral-100 pb-3">
                         My Profile

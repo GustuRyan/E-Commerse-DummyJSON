@@ -19,7 +19,7 @@
                     </router-link>
                 </div>
                 <CartContainer v-else v-for="cart in carts" :product = "cart" :quant="cart.quantity" />
-                <suggestCard v-if="list == 0" />
+                <suggestCard v-if="list == 0 && isLoggedIn()" />
             </section>
             <div class="w-full h-fit flex justify-between py-4 px-10 bg-[#84BAE8] text-white text-lg">
                 <p class="flex flex-col">

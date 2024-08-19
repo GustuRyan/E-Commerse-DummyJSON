@@ -3,7 +3,7 @@
         class="px-2 w-full h-[423px] flex flex-col group">
         <img :src="product.thumbnail" alt=""
             class="h-[233px] w-full object-cover border-4 bg-white border-[rgb(252,252,252)] group-hover:border-[rgb(245,245,245)]">
-        <div class="flex flex-col gap-4 bg-[rgb(252,252,252)] group-hover:bg-[rgb(245,245,245)] p-3">
+        <div class="flex flex-col gap-4 bg-[rgb(252,252,252)] group-hover:bg-[rgb(245,245,245)] group-hover:shadow-md p-3">
             <h2 class="h-16 font-['Antique'] text-2xl">
                 {{ product.title }}
             </h2>

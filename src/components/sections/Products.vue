@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router';
 import warnbar from '../contents/warnbar.vue';
 import { Product } from '../../composables/productsFunction';
 import { Cart } from '../../composables/cartFunction';
+import { vOnClickOutside } from '@vueuse/components';
 
 const props = defineProps({
     products: {
@@ -129,7 +130,7 @@ onUnmounted(async () => {
                     </span>
                     <img src="/images/down_fill.svg" alt="" :class="dropOpen ? 'rotate-180' : ''">
                 </div>
-                <div v-show="dropOpen" v-click-away="onClickAway" class="absolute top-16 right-0 flex flex-col px-4 py-2 w-80 rounded-md border-[1px] shadow-md cursor-pointer bg-white capitalize">
+                <div v-show="dropOpen" v-on-click-outside="onClickAway" class="absolute top-16 right-0 flex flex-col px-4 py-2 w-80 rounded-md border-[1px] shadow-md cursor-pointer bg-white capitalize">
                     <router-link @click="jumpPage(1)" :to="{}" class="font-[500] p-2 hover:bg-neutral-100 rounded-sm">
                         all products
                     </router-link>
